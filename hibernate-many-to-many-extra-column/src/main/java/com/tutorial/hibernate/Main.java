@@ -11,13 +11,11 @@ import com.tutorial.hibernate.model.Item;
 import com.tutorial.hibernate.model.Product;
 import com.tutorial.hibernate.model.ProductItem;
 
-/**
- * Hello world!
- * 
- */
-public class App {
+public class Main {
+	
 	public static void main(String[] args) {
 
+		
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("hibernate-tutorial");
 		
@@ -31,12 +29,13 @@ public class App {
 		Product product = new Product();
 		product.setName("prod0");
 
-//		Item item = em.find(Item.class, 1);
-//		Product prod = em.find(Product.class, 10);
+		em.persist(product);
+		em.persist(item);
 		
 		ProductItem pi = new ProductItem();
 		pi.setItem(item);
 		pi.setProduct(product);
+		pi.setExtraAttribute("item0-product0");
 		
 		item.setProductItems(new ArrayList<ProductItem>());
 		

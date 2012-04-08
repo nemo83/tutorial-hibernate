@@ -2,6 +2,7 @@ package com.tutorial.hibernate.model;
 
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,6 +18,9 @@ public class ProductItem {
 
 	@EmbeddedId
 	protected ProductItemPk pk = new ProductItemPk();
+
+	@Column(name = "extra_attribute", nullable = false)
+	private String extraAttribute;
 
 	public ProductItemPk getPk() {
 		return pk;
@@ -42,6 +46,14 @@ public class ProductItem {
 
 	public void setProduct(Product product) {
 		getPk().setProduct(product);
+	}
+
+	public String getExtraAttribute() {
+		return extraAttribute;
+	}
+
+	public void setExtraAttribute(String extraAttribute) {
+		this.extraAttribute = extraAttribute;
 	}
 
 	public boolean equals(Object o) {
